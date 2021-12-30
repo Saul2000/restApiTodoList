@@ -4,12 +4,14 @@ const colors = require('colors');
 const morgan = require('morgan');
 const path = require('path');
 const todoRoute = require('./routes/todo');
+const cors = require('cors');
 
 const connectDB = require('./config/db');
 dotenv.config({ path: './env'})
 connectDB()
 
 const app = express();
+app.use(cors());
 app.use(express.json())
 
 if(process.env.MODE === 'development'){
